@@ -4,20 +4,24 @@ class SearchBar extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {value: "hello"};
   }
 
-  handleChange(event) {
-    console.log("new value: ", event.target.value); 
-    this.setState({value: event.target.value});
+  handleChange = (event) => {
+    this.props.onSearchTextChanged(event.target.value);
+  }
+
+  handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.props.onSearchEntered(this.props.searchText)
+    }
   }
 
   render() {
     return (
       <input
         type="text"
-        value={this.state.value}
-        onChange={this.handleChange.bind(this)}
+        onChange={this.handleChange}
+        onKeyPress={this.handleKeyPress}
       />
     );
   }

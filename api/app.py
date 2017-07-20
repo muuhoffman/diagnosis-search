@@ -1,9 +1,12 @@
 #!venv/bin/python
 from flask import Flask, request, make_response, jsonify
+from flask_cors import CORS
+
 import util.file_util as file_util
 import services.search_service as search_service
 
 app = Flask(__name__)
+CORS(app)
 
 diagnoses = search_service.Diagnoses()
 

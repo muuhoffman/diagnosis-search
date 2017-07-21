@@ -10,7 +10,7 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {searchText: "hello", results: []};
+    this.state = {searchText: "hello", results: null};
   }
 
   onSearchTextChanged = (searchText) => {
@@ -30,18 +30,28 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div className="App" style={styles.app}>
+        <div>
+          <SearchBar parentStyle={styles.search} onSearchTextChanged={this.onSearchTextChanged} onSearchEntered={this.onSearchEntered} searchText={this.state.searchText}/>
+          <SearchResults parentStyle={styles.search} results={this.state.results}/>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <SearchBar onSearchTextChanged={this.onSearchTextChanged} onSearchEntered={this.onSearchEntered} searchText={this.state.searchText}/>
-        <SearchResults results={this.state.results}/>
       </div>
     );
+  }
+}
+
+const colors = {
+    primary: "#78A7C0",
+    secondary: "#E4DBC7"
+}
+
+const styles = {
+  app: {
+    width: "100%",
+    margin: "10px"
+  },
+  search: {
+    width: "40%"
   }
 }
 

@@ -1,5 +1,9 @@
+body {
+    background-color: #78A7C0; /* https://stackoverflow.com/questions/5766887/css-div-expanding-to-window-height-with-margin-bottom-fixed */
+}
+
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {

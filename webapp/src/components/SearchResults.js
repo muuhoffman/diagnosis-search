@@ -6,14 +6,31 @@ class SearchResults extends Component {
 
   render() {
     var rows = [];
-    this.props.results.forEach(function(result, i) {
-      rows.push(<SearchResultRow title={result} key={i}/>);
-    });
+    if (this.props.results !== null) {
+      this.props.results.forEach(function(result, i) {
+        rows.push(<SearchResultRow title={result} key={i}/>);
+      });
+      if (rows.length === 0) {
+        rows.push(<SearchResultRow title={"No Results Found"}/>);
+      }
+    }
+
+    
     return (
-      <div>
-        {rows}
-      </div>
+      <table style={style.table} width={this.props.parentStyle.width}>
+        <tbody style={style.tbody}>
+          {rows}
+        </tbody>
+      </table>
     );
+  }
+}
+
+const style = {
+  table : {
+    marginTop: "10px",
+  },
+  tbody: {
   }
 }
 

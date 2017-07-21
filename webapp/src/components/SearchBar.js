@@ -20,10 +20,22 @@ class SearchBar extends Component {
     return (
       <input
         type="text"
+        placeholder="Search Diagnosis"
+        style={Object.assign(style.textbox, this.props.parentStyle)}
         onChange={this.handleChange}
         onKeyPress={this.handleKeyPress}
       />
     );
+  }
+}
+
+const style = {
+  textbox: {
+    textIndent: "10px",
+    padding: "10px 0px",
+    fontSize: "18px",
+    border: "0px",
+    boxShadow: "2px 2px grey"  
   }
 }
 
